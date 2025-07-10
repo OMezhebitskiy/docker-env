@@ -1,0 +1,16 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+Homestead.json
+Homestead.yaml
+Thumbs.db
+/nginx/*.conf
