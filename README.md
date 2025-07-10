@@ -38,7 +38,7 @@ docker compose up -d --build
 
 Nginx: http://sample.localhost/
 
-Redis WebUI: http://localhost:9987/
+Redis WebUI: http://localhost:9987/ (login/pass: root/secret)
 
 Buggregator: http://localhost:8000
 
