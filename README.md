@@ -37,8 +37,11 @@ docker compose up -d --build
 4️⃣ Check services:
 
 Nginx: http://sample.localhost/
+
 Redis WebUI: http://localhost:9987/
+
 Buggregator: http://localhost:8000
+
 RabbitMQ: http://localhost:15672 (login/pass: guest/guest)
 
 
