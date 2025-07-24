@@ -9,7 +9,6 @@ services:
       - "dockerhost:${DOCKER_HOST_IP}"
     networks:
       - appNet
-    command: sh -c "crond && php-fpm"
 
   php82:
     build:
@@ -128,9 +127,22 @@ services:
     networks:
       - appNet
 
+  chartdb:
+    image: ghcr.io/chartdb/chartdb:latest
+    container_name: chartdb
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      # OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      DISABLE_ANALYTICS: "true"
+    volumes:
+      - chart_db:/var/lib/chart_db/data
+
 volumes:
   mysql_data:
   pg_data:
+  chart_db:
 
 networks:
   appNet:

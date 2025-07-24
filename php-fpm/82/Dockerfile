@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www
-
+COPY supervisord.conf /etc/supervisord.conf
 COPY docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY cron-jobs /etc/cron.d/scheduler
 
@@ -11,6 +11,7 @@ RUN apk update && apk add --no-cache \
     lz4-dev zstd-dev liblzf-dev \
     linux-headers \
     oniguruma-dev \
+    supervisor \
     libzip-dev \
     zlib-dev \
     icu-dev \
@@ -43,3 +44,7 @@ RUN apk update && apk add --no-cache \
 
 RUN chmod 0644 /etc/cron.d/scheduler && crontab /etc/cron.d/scheduler \
     && touch /var/log/cron.log
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+

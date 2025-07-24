@@ -2,12 +2,14 @@ FROM php:8.4-fpm
 
 WORKDIR /var/www
 
+COPY supervisord.conf /etc/supervisord.conf
 COPY docker.conf /usr/local/etc/php-fpm.d/docker.conf
 COPY cron-jobs /etc/cron.d/scheduler
 
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
     libzip-dev unzip git curl libonig-dev \
+    supervisor \
     libssl-dev zip tzdata bash cron \
     pkg-config libicu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -20,3 +22,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN chmod 0644 /etc/cron.d/scheduler && crontab /etc/cron.d/scheduler \
     && touch /var/log/cron.log
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
