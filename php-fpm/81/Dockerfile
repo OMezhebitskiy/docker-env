@@ -47,5 +47,5 @@ RUN apk update && apk add --no-cache \
 RUN chmod 0644 /etc/cron.d/scheduler && crontab /etc/cron.d/scheduler \
     && touch /var/log/cron.log
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin/start
+RUN chmod +x /usr/local/bin/start

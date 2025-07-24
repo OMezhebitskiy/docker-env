@@ -1,2 +1,4 @@
 #!/bin/sh
-exec supervisord -n -c /etc/supervisord.conf
+supervisord -n -c /etc/supervisord.conf
+
+exec "$@"
