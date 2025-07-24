@@ -48,4 +48,6 @@ RUN chmod 0644 /etc/cron.d/scheduler && crontab /etc/cron.d/scheduler \
 COPY entrypoint.sh /usr/local/bin/start
 RUN chmod +x /usr/local/bin/start
 
+CMD ["/usr/local/bin/start"]
+
 
