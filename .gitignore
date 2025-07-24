@@ -14,3 +14,4 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 /nginx/*.conf
+docker-compose.override.yml
