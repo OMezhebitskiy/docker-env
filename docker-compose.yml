@@ -3,10 +3,17 @@ services:
     build:
       context: ./php-fpm/81
     container_name: ${PHP81_CONTAINER}
+    environment:
+      PHP_IDE_CONFIG: "serverName=php81"
+      XDEBUG_MODE: "off"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003 idekey=php81"
     volumes:
       - ${PROJECTS_PATH}:/var/www
     extra_hosts:
       - "dockerhost:${DOCKER_HOST_IP}"
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5171:5173"
     networks:
       - appNet
 
@@ -14,10 +21,17 @@ services:
     build:
       context: ./php-fpm/82
     container_name: ${PHP82_CONTAINER}
+    environment:
+      PHP_IDE_CONFIG: "serverName=php82"
+      XDEBUG_MODE: "off"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003 idekey=php82"
     volumes:
       - ${PROJECTS_PATH}:/var/www
     extra_hosts:
       - "dockerhost:${DOCKER_HOST_IP}"
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5172:5173"
     networks:
       - appNet
 
@@ -25,10 +39,17 @@ services:
     build:
       context: ./php-fpm/84
     container_name: ${PHP84_CONTAINER}
+    environment:
+      PHP_IDE_CONFIG: "serverName=php84"
+      XDEBUG_MODE: "off"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003 idekey=php84"
     volumes:
       - ${PROJECTS_PATH}:/var/www
     extra_hosts:
       - "dockerhost:${DOCKER_HOST_IP}"
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5173:5173"
     networks:
       - appNet
 
